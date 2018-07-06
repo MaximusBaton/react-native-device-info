@@ -1,3 +1,9 @@
+
+
+**NB**: this is a fork of [react-native-popup-dialog](https://github.com/jacklam718/react-native-popup-dialog)
+
+
+
 # react-native-device-info
 
 [![npm version](https://badge.fury.io/js/react-native-device-info.svg)](http://badge.fury.io/js/react-native-device-info)
@@ -19,13 +25,13 @@ Device Information for [React Native](https://github.com/facebook/react-native).
 Using npm:
 
 ```shell
-npm install --save react-native-device-info
+npm install --save https://github.com/MaximusBaton/react-native-device-info.git
 ```
 
 or using yarn:
 
 ```shell
-yarn add react-native-device-info
+yarn add https://github.com/MaximusBaton/react-native-device-info.git
 ```
 
 > ⚠️ If you are on React Native > 0.47, you must use version 0.11.0 of this library or higher

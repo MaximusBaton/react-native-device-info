@@ -59,10 +59,10 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
   }
 
   private WifiInfo getWifiInfo() {
-    if (this.wifiInfo == null) {
+    /* if (this.wifiInfo == null) {
       WifiManager manager = (WifiManager) reactContext.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
       this.wifiInfo = manager.getConnectionInfo();
-    }
+    } */this.wifiInfo = null;
     return this.wifiInfo;
   }
 
@@ -255,13 +255,13 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     }
 
 
-    try {
+    /* try {
       if (Class.forName("com.google.android.gms.iid.InstanceID") != null) {
         constants.put("instanceId", com.google.android.gms.iid.InstanceID.getInstance(this.reactContext).getId());
       }
     } catch (ClassNotFoundException e) {
       constants.put("instanceId", "N/A: Add com.google.android.gms:play-services-gcm to your project.");
-    }
+    } */constants.put("instanceId", null);
     constants.put("serialNumber", Build.SERIAL);
     constants.put("deviceName", deviceName);
     constants.put("systemName", "Android");
@@ -287,13 +287,14 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     constants.put("isTablet", this.isTablet());
     constants.put("fontScale", this.fontScale());
     constants.put("is24Hour", this.is24Hour());
-    if (getCurrentActivity() != null &&
+    /* if (getCurrentActivity() != null &&
         (getCurrentActivity().checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED ||
-            getCurrentActivity().checkCallingOrSelfPermission(Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED ||
-            getCurrentActivity().checkCallingOrSelfPermission("android.permission.READ_PHONE_NUMBERS") == PackageManager.PERMISSION_GRANTED)) {
+                (Build.VERSION.SDK_INT >= 23 && getCurrentActivity().checkCallingOrSelfPermission(Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED) ||
+                (Build.VERSION.SDK_INT >= 26 && getCurrentActivity().checkCallingOrSelfPermission("android.permission.READ_PHONE_NUMBERS") == PackageManager.PERMISSION_GRANTED))) {
       TelephonyManager telMgr = (TelephonyManager) this.reactContext.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
       constants.put("phoneNumber", telMgr.getLine1Number());
-    }
+    } */constants.put("phoneNumber", null);
+    
     constants.put("carrier", this.getCarrier());
     constants.put("totalDiskCapacity", this.getTotalDiskCapacity());
     constants.put("freeDiskStorage", this.getFreeDiskStorage());
